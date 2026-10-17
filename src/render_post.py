@@ -52,7 +52,7 @@ def render(destination: Path | None = None, dpi: int = 100) -> tuple[Path, Path]
     line(.07, .737, .93, .737)
 
     t(.07, .712, "01   /   THE CIRCUIT", 12, "forest", weight="bold")
-    t(.07, .681, r"Start in $|00\rangle$, apply H to q0, then CNOT from q0 to q1.", 12, "muted")
+    t(.07, .681, r"Start in $|00\rangle$, apply H to $q_0$, then CNOT (control: $q_0$, target: $q_1$).", 12, "muted")
     y0, y1 = .603, .544
     for q, y in ((0, y0), (1, y1)):
         t(.075, y, rf"$q_{q}$", 16)
@@ -109,13 +109,13 @@ def render(destination: Path | None = None, dpi: int = 100) -> tuple[Path, Path]
 
     line(.07, .175, .93, .175)
     t(.07, .145, "THE IMPORTANT DISTINCTION", 10.5, "forest", weight="bold")
-    t(.07, .114, "The 50/50 histogram is not proof of entanglement.",
-      18.5, "forest", family="DejaVu Serif", weight="bold")
+    t(.07, .114, "A 50/50 measurement distribution alone does not establish entanglement.",
+      16.0, "forest", family="DejaVu Serif", weight="bold")
     t(.07, .085, "A classical mixture can have the same Z-basis results. Next: how to tell them apart.",
       11.5, "muted")
     line(.07, .054, .93, .054)
-    t(.07, .032, "Basis labels: |q1 q0> (Qiskit convention); q0 is the rightmost bit.", 9, "muted")
-    t(.93, .032, "PYTHON  /  NUMPY  /  MATPLOTLIB", 9, "muted", ha="right")
+    t(.07, .032, r"Qiskit bit order: $|q_1 q_0\rangle$; top-wire $q_0$ is the rightmost state bit.", 11, "muted")
+    t(.93, .032, "NUMPY  /  MATPLOTLIB", 9, "muted", ha="right")
     png, svg = dest / "bell_state_post.png", dest / "bell_state_post.svg"
     fig.savefig(png, dpi=dpi, facecolor=c["paper"])
     fig.savefig(svg, facecolor=c["paper"])
